@@ -1,9 +1,13 @@
+--- START OF FILE footer.html ---
 <div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="{{ blogBase['homeUrl'] }}">{{ blogBase['title'] }}</a></div>
 <div id="footer2">
     {%- if blogBase['filingNum']!='' -%}
     <span id="filingNum"><a href="https://beian.miit.gov.cn/" target="_blank">{{ blogBase['filingNum'] }}</a> • </span>
     {%- endif %}
-    <span id="runday"></span><span> <a href="https://github.com/YU-1021/YU-1021.github.io/issues/new" target="_blank">write</a></span>
+    <span id="runday"></span>
+    <a href="https://github.com/YU-1021/YU-1021.github.io/issues/new" target="_blank" class="btn btn-invisible circle" title="Write">
+        <svg class="octicon" width="16" height="16"><path id="pathWrite" fill-rule="evenodd"></path></svg>
+    </a>
 </div>
 
 <script>
@@ -16,4 +20,7 @@ if("{{ blogBase['startSite'] }}"!=""){
     var diffDay=Math.floor(diff/(1000*60*60*24));
     document.getElementById("runday").innerHTML="{{ i18n['run'] }}"+diffDay+"{{ i18n['days'] }}"+" • ";
 }
+
+/* 设置写文章按钮的图标 (使用内置的 post 图标) */
+document.getElementById("pathWrite").setAttribute("d",IconList["post"]);
 </script>
